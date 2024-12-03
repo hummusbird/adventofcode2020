@@ -29,9 +29,9 @@ class Program
 
         // Part 2
 
-        for (int slicesize = 2; slicesize < input.Count(); slicesize++)
+        for (int slicesize = 2; slicesize < input.Length; slicesize++)
         {
-            for (int start = 0; start + slicesize < input.Count(); start++)
+            for (int start = 0; start + slicesize < input.Length; start++)
             {
                 if (input[start..(start + slicesize)].Sum() == invalid)
                 {
