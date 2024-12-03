@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Diagnostics.Metrics;
-
-namespace advent_8;
+﻿namespace advent_8;
 
 class Program
 {
@@ -12,10 +9,9 @@ class Program
         // Part 1
 
         int p1acc = 0;
-        int i = 0;
         List<int> p1indexes = [];
 
-        while (true)
+        for (int i = 0; true; i++)
         {
             if (p1indexes.Contains(i)) { break; }
             p1indexes.Add(i);
@@ -33,7 +29,6 @@ class Program
                     i += instructions[i].Value - 1;
                     break;
             }
-            i++;
         }
 
         Console.WriteLine("Part 1: " + p1acc);
@@ -46,7 +41,6 @@ class Program
 
         while (running)
         {
-            int j = 0;
             p2acc = 0;
             List<int> p2indexes = [];
             List<KeyValuePair<string, int>> instr = instructions.ToList();
@@ -54,7 +48,7 @@ class Program
             int index = instr.IndexOf(instr.Where(x => x.Key == "nop" || x.Key == "jmp").Skip(swapped).FirstOrDefault());
             instr[index] = instr[index].Key == "jmp" ? new KeyValuePair<string, int>("nop", instr[index].Value) : new KeyValuePair<string, int>("jmp", instr[index].Value);
 
-            while (true)
+            for (int j = 0; true; j++)
             {
                 if (j >= instr.Count()) { running = false; break; }
                 if (p2indexes.Contains(j)) { break; }
@@ -73,7 +67,6 @@ class Program
                         j += instr[j].Value - 1;
                         break;
                 }
-                j++;
             }
 
             swapped++;
